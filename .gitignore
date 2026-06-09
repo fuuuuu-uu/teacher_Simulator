@@ -1,0 +1,7 @@
+# 忽略 CMake 編譯暫存資料夾
+build/
+
+# 忽略 VS Code 個人設定檔
+.vscode/
+
+*.exe
