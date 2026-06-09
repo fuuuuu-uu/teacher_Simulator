@@ -1,0 +1,12 @@
+
+在v1.5中的改動：
+
+去除複雜的 if(緊急) new 與 delete 邏輯，用 eventPool[randomIndex]->triggerChallenge() 實現多型
+
+修正 loadAllEvents 的指標宣告：
+根據 leval == "緊急"，直接 new Event 或 new UrgentEvent，完美保有了子類別的基因，多型正式生效。
+
+精簡 main 函式中的多型呼叫：
+用 currentEvent->triggerChallenge()，代替原本在 main 裡面重複 new 又 delete 的易出錯做法， 這個版本的虛擬函式表（Vtable）會自動導向正確功能。
+
+加入了 for (auto e : eventPool) delete e  ： 與 v1.1相比不會「記憶體洩漏」
