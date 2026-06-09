@@ -1,0 +1,32 @@
+下載並安裝 CMake 核心程式請根據您的作業系統進行安裝：
+Windows 系統：
+前往 CMake 官方下載頁面，下載 Windows x64 Installer (.msi 檔)。
+執行安裝程式，最重要的一步：在安裝過程中，
+務必勾選 Add CMake to the system PATH for all users（將 CMake 加入系統環境變數）。
+安裝完成後，必須重啟 VS Code 讓環境變數生效。
+
+在 VS Code 中手動指定 CMake 路徑
+
+安裝官方套件：請到 VS Code 的 Extensions（左側正方形圖示），
+搜尋並安裝 CMake Tools（由 Microsoft 開發）。
+設定編譯器：安裝後，VS Code 下方狀態列會出現 CMake 相關按鈕，
+或者按下 Ctrl + Shift + P 輸入 CMake: Select a Kit，
+選擇你的 GCC 或 MinGW 編譯器。
+執行專案：點擊 VS Code 最下方狀態列的 「Build」 按鈕進行編譯。
+點擊下方狀態列的 「小播放鍵（通常在 Build 旁邊）」 或 
+「小甲蟲（除錯）」 來執行程式，它會自動把所有檔案編譯進去。
+
+
+徹底清除 VS Code 的舊緩存
+有時候 VS Code 卡住了，需要重置設定。
+在 VS Code 中按下鍵盤快捷鍵 Ctrl + Shift + P（Mac 為 Cmd + Shift + P）。
+輸入 CMake: Reset CMake Tools Extension State（重置擴充功能狀態）
+並點擊執行。
+再次按下 Ctrl + Shift + P，
+輸入 CMake: Clean Configure（清除並重新配置）。
+
+手動刪除 Build 資料夾 (若清除並重新配置 失敗)
+關閉 VS Code。
+透過檔案總管進入您的專案資料夾 main_code v2.0。
+直接將 build 資料夾整個刪除。
+重新打開 VS Code，CMake Tools 會自動偵測並重新建立乾淨的 build 目錄。

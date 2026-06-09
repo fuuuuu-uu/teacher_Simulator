@@ -1,0 +1,10 @@
+
+目前最新的v2.0：
+
+拆分為 main.cpp、GameObjects.h 與 GameObjects.cpp
+使用條件編譯巨集（Header Guards）防止重複引入。
+洗牌演算法：使用 <algorithm> 的 std::shuffle 配合 random_engine 與時間種子，解決了隨機事件重複出現的 Bug。
+將 events.csv 置於 /event 資料夾並改變檔案讀取路徑，避免環境建置時丟失檔案或需手動移動檔案。
+導入了 std::getline(cin, dummy) 技術，杜絕緩衝區殘存值之問題
+
+使用 mermaid online ( https://www.mermaidonline.live/editor ) 製作新UML圖
