@@ -67,10 +67,9 @@ Option Event::getResult(int choice)
 
 bool Event::triggerChallenge()
 {
-    cout << "觸發隨機判定 ! -> 你在這件事中 : ";
     // 一般事件是擲硬幣
+    cout << "觸發隨機判定 ! -> 你在這件事中 : ";
     return (rand() % 2 == 0); //== 0:ture
-    // 警急事件在底下
 }
 
 UrgentEvent::UrgentEvent(int i, string leval, string tit, string data) : Event(i, leval, tit, data) {}

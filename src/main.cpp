@@ -11,7 +11,6 @@
 #include <limits>   //使用無上限清除的數值巨集 ->清除緩衝區殘值
 
 using namespace std;
-// 結算畫面
 void finalShow(int success, int mood, int prestige)
 { // 結算畫面
     cout << "-------------* 結算 time !! *-------------" << endl;
@@ -149,8 +148,7 @@ int main()
     _getcwd(buff, 255);
     cout << "目前工作目錄: " << buff << endl;
 
-    loadAllEvents();   // 載入事件庫
-    srand(time(NULL)); // 啟動隨機數種子
+    loadAllEvents(); // 載入事件庫
 
     unsigned int seed = time(NULL);
     srand(seed);   // 啟動傳統隨機數種子
@@ -169,6 +167,9 @@ int main()
     if (star != 1234)
     {
         cout << "重啟後可執行";
+        // 提早退出前也要記得釋放記憶體
+        for (auto e : eventPool)
+            delete e;
         return 0;
     }
     // 核心改動：利用 std::shuffle 將整個事件池隨機打亂（洗牌）
@@ -176,11 +177,17 @@ int main()
     auto rng = std::default_random_engine(seed);
     std::shuffle(eventPool.begin(), eventPool.end(), rng);
 
+    // int randomIndex = rand() % eventPool.size();
+    // 原 V1.1 版本：隨機數除事件池的餘數->確保一定在範圍內
+
     // 決定要執行的事件數量，若池子事件不夠，則以池子大小為準
     int totalRounds = (eventPool.size() < 4) ? eventPool.size() : 4;
+
     for (int i = 0; i < totalRounds; i++)
     { // 4個事件
-        //    int randomIndex = rand() % eventPool.size();    //隨機數 除 事件池 後的餘數 -> 確保一定在範圍內
+
+        // 底下為 for 迴圈內容...
+
         Event *currentEvent = eventPool[i]; // 直接取得多型指標
 
         int OptionChoose = 0; // 使用者事件選擇的選項
