@@ -107,9 +107,9 @@ void loadAllEvents()
             bool found = false;
             for (auto &e : eventPool)
             { // 對於 eventPool 裡面的每一個元素 e，都執行一次大括號裡的事
-                if (e->eventID == id)
-                {                               // 如果原本就在事件池
-                    e->options.push_back(temp); // 把剛剛讀的選項與值加在後面
+                if (e->getID() == id)
+                {                       // 如果原本就在事件池
+                    e->addOption(temp); // 把剛剛讀的選項與值加在後面
                     found = true;
                     break;
                 }
@@ -126,7 +126,7 @@ void loadAllEvents()
                 {
                     newEvent = new Event(id, leval, titleFromCSV, descFromCSV);
                 }
-                newEvent->options.push_back(temp);
+                newEvent->addOption(temp);
                 eventPool.push_back(newEvent);
             }
         }
@@ -185,8 +185,6 @@ int main()
 
     for (int i = 0; i < totalRounds; i++)
     { // 4個事件
-
-        // 底下為 for 迴圈內容...
 
         Event *currentEvent = eventPool[i]; // 直接取得多型指標
 

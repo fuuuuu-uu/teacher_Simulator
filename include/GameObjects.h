@@ -26,7 +26,7 @@ struct Option
 
 class Event
 {
-public:
+private:
     int eventID;                  // 事件編號
     std::string eventleval;       // 事件等級
     std::string title;            // 標題
@@ -41,6 +41,8 @@ public:
     int EventShow();
     void optionsChooses(int i);
     void OptionsResult(int i, int change);
+    int getID();
+    void addOption(const Option &temp);
     Option getResult(int choice);
     virtual bool triggerChallenge(); // 虛擬函式以支援多型
 };

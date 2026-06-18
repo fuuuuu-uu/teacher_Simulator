@@ -59,7 +59,15 @@ void Event::OptionsResult(int i, int change)
     cout << "教室氛圍度 : " << (options[i].moodChange > 0 ? "+" : "") << options[i].moodChange * change << endl;
     cout << "教師威望值 : " << (options[i].prestigeChange > 0 ? "+" : "") << options[i].prestigeChange * change << endl;
 }
+int Event::getID()
+{
+    return eventID;
+}
+void Event::addOption(const Option &temp)
+{
 
+    options.push_back(temp);
+}
 Option Event::getResult(int choice)
 {
     return options[choice - 1];
